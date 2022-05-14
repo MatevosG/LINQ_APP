@@ -46,6 +46,7 @@
     <Compile Include="Addres.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="IEnumerableExtention.cs" />
+    <Compile Include="IqueryableExtention.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="PhoneType.cs" />
     <Compile Include="Program.cs" />

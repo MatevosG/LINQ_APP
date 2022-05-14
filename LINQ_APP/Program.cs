@@ -52,26 +52,17 @@ namespace LINQ_APP
                 Console.WriteLine($"{item.Name}--{item.Street}--{item.City}");
 
 
-            var resSelect = customers._Select(x => x.Name);
+            var resfirstordefault = customers.AsQueryable()._FirstOrDefault(c => c.Id == 4);
+
+            var reswhere = addresses.AsQueryable()._Where(c => c.CustomerId == 1);
+
+            var resSelect = customers.AsQueryable()._Select(x => x.Name);
             foreach (var item in resSelect)
                 Console.WriteLine(item);
 
-            var selectMany = customers._SelectMany(x => x.Phones);
+            var selectMany = customers.AsQueryable()._SelectMany(x => x.Phones);
             foreach (var item in selectMany)
                 Console.WriteLine($"{item.Number}--{item.PhoneType}");
-
-
-
-            Func<List<Customer>, List<string>> testSelect = (List<Customer> x) =>
-            {
-                List<string> list = new List<string>();
-                foreach (var item in x)
-                {
-                    list.Add(item.Name);
-                }
-                return list.ToList();
-            };
-            var testSelectFunc = testSelect(customers.ToList());
         }
 
         private static void NewMethod()
@@ -83,5 +74,6 @@ namespace LINQ_APP
                 Console.WriteLine(item);
             }
         }
+        
     }
 }
